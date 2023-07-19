@@ -1,5 +1,3 @@
-for x in range(100):
-    if x <= 9:
-        print("0{},".format(x), end=' ')
-    else:
-        print("{},".format(x), end=' ')
+for i in range(0, 99):
+    print("{:02d},".format(i), end=' ')
+print("{:02d}".format(i + 1))
