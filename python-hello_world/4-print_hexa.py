@@ -1,2 +1,2 @@
 for x in range(99):
-    print(x, "=", hex(x))
+    print("{}=".format(x), hex(x))
