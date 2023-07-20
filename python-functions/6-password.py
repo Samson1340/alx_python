@@ -11,5 +11,4 @@ def validate_password(password):
         is_valid = False
     if any(char.isspace() for char in password): 
         is_valid = False
-    if is_valid: 
-        return is_valid 
+    return is_valid 
