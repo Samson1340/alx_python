@@ -1,16 +1,17 @@
 if __name__ == "__main__":
-    def argumentPrint(argv):
-        num = len(argv) - 1
-        if num == 0:
-            print("{} arguments.".format(num))
-        elif num == 1:
-            print("{} argument:".format(num))
-        else:
-            print("{} arguments:".format(num))
+    import sys
+    i = len(sys.argv) - 1
 
-        if num >= 1:
-            num = 0
-            for arg in argv:
-                if num != 0:
-                    print("{}: {}".format(num, arg))
-                num += 1
+    if i == 0:
+        print("{} arguments.".format(i))
+    elif i == 1:
+        print("{} argument:".format(i))
+    else:
+        print("{} arguments:".format(i))
+
+    if i >= 1:
+        i = 0
+        for arg in sys.argv:
+            if i != 0:
+                print("{}: {}".format(i, arg))
+            i += 1
