@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Uses requests module. Prints error code"""
-from requests import requests
+from urllib import requests
 from sys import argv
 
 if __name__ == "__main__":
