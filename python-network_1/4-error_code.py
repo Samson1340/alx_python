@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-""" Fetches header from url passed as arg & handles errors a bit"""
-from urllib import request, parse, error
-import sys
+""" Uses requests module. Prints error code"""
+import requests
+from sys import argv
 
 if __name__ == "__main__":
-    try:
-        with request.urlopen(sys.argv[1]) as response:
-            print(response.read().decode('utf-8'))
-    except error.HTTPError as e:
-        print("Error code:", e.code)
+    response = requests.get(argv[1])
+    if response.status_code > 400:
+        print("Error code:", response.status_code)
+    else:
+        print(response.text)
