@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-""" Uses requests module to get header info"""
-from urllib import requests
-from sys import argv
+""" Fetches header from url passed as arg"""
+from urllib import request
+import sys
 
 if __name__ == "__main__":
-    response = requests.get(argv[1])
-    print(response.headers.get('X-Request-Id'))
+    with request.urlopen(sys.argv[1]) as response:
+        print(response.getheader("X-Request-Id"))
