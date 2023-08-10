@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-"""Fetches basic request with urlib"""
-from urllib import requests
+""" Uses requests module -- yay"""
+import requests
 
-with requests.urlopen("https://intranet.hbtn.io/status") as response:
-    """Response"""
-    r = response.read()
-    print("Body response:\n\t- type: {}\n\t- content: {}\n\t- utf8 content: {}"
-          .format(type(r), r, r.decode('utf-8')))
+if __name__ == "__main__":
+    response = requests.get('https://intranet.hbtn.io/status')
+    print("Body response:\n\t- type: {}\n\t- content: {}"
+          .format(type(response.text), response.text))
