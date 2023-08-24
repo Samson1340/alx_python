@@ -19,7 +19,12 @@ if __name__ == '__main__':
 
     cursor = db.cursor()
 
-    cursor.execute("SELECT * FROM cities ORDER BY cities.id ASC")
+    sql = """SELECT c.id, c.name, s.name
+          FROM states s, cities c
+          WHERE c.state_id = s.id
+          ORDER BY c.id ASC"""
+
+    cursor.execute(sql)
 
     data = cursor.fetchall()
 

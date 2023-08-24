@@ -24,13 +24,12 @@ if __name__ == '__main__':
           INNER JOIN cities ON states.id = cities.state_id
           WHERE states.name = %s
           ORDER BY cities.id ASC"""
-    
+
     cursor.execute(sql, (sys.argv[4],))
 
     data = cursor.fetchall()
 
-    for row in data:
-        print(row)
+    print(", ".join([city[0] for city in data]))
 
     cursor.close()
     db.close()
