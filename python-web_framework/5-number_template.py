@@ -3,6 +3,7 @@ This is to start Flask web application including route
 """
 
 from flask import Flask
+from flask import render_template
 app = Flask(__name__)
 
 @app.route('/', strict_slashes=False)
