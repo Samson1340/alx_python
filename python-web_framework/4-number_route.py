@@ -24,8 +24,7 @@ def pythoniscool(text='is cool'):
 
 @app.route('/number/<n>',strict_slashes=False)
 def nisinteger(n):
-    if n != 0:
-        return n
+    return "{:d} is a number".format(n)
         
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='5000')
