@@ -35,9 +35,9 @@ def numberstemplates(n):
 def numbersandevenness(n):
     """display a HTML page only if n is an integer"""
     if n % 2 == 0:
-        evenness = 'is even'
+        evenness = 'even'
     else:
-        evenness = 'is odd'
+        evenness = 'odd'
     return render_template('6-number_odd_or_even.html', n=n,
                            evenness=evenness)
         
