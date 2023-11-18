@@ -1,24 +1,34 @@
 #!/usr/bin/python3
-# csv exported
+"""
+Extends the 0-gather_data_from_an_API.py Python script
+To export data in the CSV format instead.
+"""
+
 import csv
-from requests import get
+import requests
 from sys import argv
 
-
-def cvsWrite(user):
-    """writes to csv"""
-    data = get('https://jsonplaceholder.typicode.com/todos?userId={}'.format(
-        user)).json()
-    name = get('https://jsonplaceholder.typicode.com/users/{}'.format(
-        user)).json().get('username')
-    employ_data = open('{}.csv'.format(user), 'w')
-    cwrite = csv.writer(employ_data, quoting=csv.QUOTE_ALL)
-    for line in data:
-        lined = [line.get('userId'), name,
-                 line.get('completed'), line.get('title')]
-        cwrite.writerow(lined)
-    employ_data.close()
-
-
 if __name__ == "__main__":
-    cvsWrite(argv[1])
+    user_id = argv[1]
+    todo = requests.get(
+            'https://jsonplaceholder.typicode.com/todos/',
+            params={'userId': user_id}
+            ).json()
+    user = requests.get(
+            'https://jsonplaceholder.typicode.com/users/{}'
+            .format(user_id)
+            ).json()
+    username = user.get('username')
+
+    with open("{}.csv".format(user_id), "w", newline="") as csvfile:
+        file_writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+        [
+                file_writer.writerow(
+                    [
+                        user_id,
+                        username,
+                        task.get('completed'),
+                        task.get('title')
+                        ]
+                    ) for task in todo
+         ]
