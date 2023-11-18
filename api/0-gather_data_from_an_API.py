@@ -1,8 +1,4 @@
-#!/usr/bin/python3
-"""
-Checks student output for returning info from REST API
-"""
-
+# this is the todo list api
 import requests
 import sys
 
